@@ -1,0 +1,26 @@
+{
+  "name": "chinese-tool",
+  "version": "1.0.0",
+  "description": "提供成语 词语 歇后语 汉字的释义搜索和随机获取（可用作成语验证码/歇后语口令）",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hibichann/chinese-tool.git"
+  },
+  "keywords": [
+    "chinese"
+  ],
+  "author": "hibichann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hibichann/chinese-tool/issues"
+  },
+  "homepage": "https://github.com/hibichann/chinese-tool#readme",
+  "dependencies": {
+    "fuse.js": "^6.6.2"
+  }
+}

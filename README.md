@@ -1,2 +1,5 @@
-# chinese-tool
-提供成语 词语 歇后语 汉字的释义搜索和随机获取（可用作成语验证码/歇后语口令）
+# Chinese-captcha
+
+提供成语，词语的验证码，支持控制
+
+数据来源及格式 https://github.com/pwxcoo/chinese-xinhua
