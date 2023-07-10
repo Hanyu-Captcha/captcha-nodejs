@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+
+		<title>随机背景图片生成器</title>
+	</head>
+	<body>
+		<canvas id="captchaCanvas" width="200" height="50"></canvas>
+
+		<script>
+			// 获取 canvas 元素
+			const canvas = document.getElementById("captchaCanvas")
+			const ctx = canvas.getContext("2d")
+
+			// 生成随机颜色
+			function getRandomColor() {
+				const letters = "0123456789ABCDEF"
+				let color = "#"
+				for (let i = 0; i < 6; i++) {
+					color += letters[Math.floor(Math.random() * 16)]
+				}
+				return color
+			}
+
+			// 绘制随机模糊圆形
+			function drawRandomCircle(x, y, radius) {
+				const color = getRandomColor()
+				ctx.beginPath()
+				ctx.arc(x, y, radius, 0, Math.PI * 2, false)
+				ctx.fillStyle = color
+				ctx.shadowColor = color
+				ctx.shadowBlur = 10
+				ctx.fill()
+			}
+
+			// 绘制随机模糊曲线
+			function drawRandomCurve(x1, y1, x2, y2, x3, y3) {
+				const color = getRandomColor()
+				ctx.beginPath()
+				ctx.moveTo(x1, y1)
+				ctx.quadraticCurveTo(x2, y2, x3, y3)
+				ctx.strokeStyle = color
+				ctx.shadowColor = color
+				ctx.shadowBlur = 10
+				ctx.stroke()
+			}
+
+			// 绘制随机文字
+			function drawRandomText(x, y, text) {
+				const color = getRandomColor()
+				ctx.font = "24px KaiTi"
+				ctx.fillStyle = "#000"
+				ctx.shadowColor = "#fff"
+				ctx.shadowBlur = 10
+				ctx.fillText(text, x, y)
+			}
+
+			// 绘制随机背景和文字
+			function drawRandomBackground() {
+				for (let i = 0; i < 300; i++) {
+					const x = Math.random() * canvas.width
+					const y = Math.random() * canvas.height
+					const radius = Math.random() * 2
+					drawRandomCircle(x, y, radius)
+				}
+
+				for (let i = 0; i < 20; i++) {
+					const x1 = Math.random() * canvas.width
+					const y1 = Math.random() * canvas.height
+					const x2 = Math.random() * canvas.width
+					const y2 = Math.random() * canvas.height
+					const x3 = Math.random() * canvas.width
+					const y3 = Math.random() * canvas.height
+					drawRandomCurve(x1, y1, x2, y2, x3, y3)
+				}
+				const text = "叶公好龙"
+				var characters = text.match(/[\u4e00-\u9fa5]/g)
+				for (let i = 0; i < characters.length; i++) {
+					const x = Math.random() * 25 + i * 50 + 5
+					const y = Math.random() * canvas.height * 0.5 + 20
+					drawRandomText(x, y, text[i])
+				}
+			}
+
+			// 初始化
+			function init() {
+				drawRandomBackground()
+			}
+
+			// 调用初始化函数
+			init()
+		</script>
+	</body>
+</html>
