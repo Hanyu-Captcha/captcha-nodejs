@@ -77,6 +77,7 @@
 				const text = "叶公好龙"
 				var characters = text.match(/[\u4e00-\u9fa5]/g)
 				for (let i = 0; i < characters.length; i++) {
+					// 控制间距，修改X就能控制每个字符所在的横向范围
 					const x = Math.random() * 25 + i * 50 + 5
 					const y = Math.random() * canvas.height * 0.5 + 20
 					drawRandomText(x, y, text[i])
